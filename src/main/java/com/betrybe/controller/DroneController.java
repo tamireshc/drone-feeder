@@ -54,4 +54,14 @@ public class DroneController {
     droneService.delete(id);
     return Response.ok("Drone Deleted").build();
   }
+
+  @GET
+  @Path("/{id}")
+  public Response findById(@PathParam("id") Integer id) {
+    Drone droneSearch = droneService.findById(id);
+    if (droneSearch == null) {
+      throw new NotFoundException("Drone not Found");
+    }
+    return Response.ok(droneSearch).build();
+  }
 }
