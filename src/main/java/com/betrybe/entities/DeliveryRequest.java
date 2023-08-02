@@ -1,41 +1,20 @@
-package com.betrybe.models;
+package com.betrybe.entities;
 
 import com.betrybe.enuns.Status;
-import jakarta.json.bind.annotation.JsonbTransient;
+import com.betrybe.models.Drone;
+import com.betrybe.models.Position;
+import com.betrybe.models.Video;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@Entity
-public class Delivery {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
-
-  @Column
+public class DeliveryRequest {
   private LocalDateTime schedule_delivery;
-  @Column
   private LocalDateTime delivery_date;
-  @Column
   private Status status;
-  @ManyToOne
-  @JoinColumn(name="drone_id")
-  private Drone drone;
-  @JoinColumn(name = "video_id")
-  @OneToOne(fetch = FetchType.EAGER)
+  private Integer droneId;
   private Video video;
-
-  @JoinColumn(name = "position_id")
-  @OneToOne(fetch = FetchType.EAGER)
   private Position position;
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
 
   public LocalDateTime getSchedule_delivery() {
     return schedule_delivery;
@@ -61,12 +40,12 @@ public class Delivery {
     this.status = status;
   }
 
-  public Drone getDrone() {
-    return drone;
+  public Integer getDroneId() {
+    return droneId;
   }
 
-  public void setDrone(Drone drone) {
-    this.drone = drone;
+  public void setDroneId(Integer droneId) {
+    this.droneId = droneId;
   }
 
   public Video getVideo() {
