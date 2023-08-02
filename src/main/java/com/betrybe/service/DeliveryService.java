@@ -1,7 +1,6 @@
 package com.betrybe.service;
 
 import com.betrybe.entities.DeliveryRequest;
-import com.betrybe.entities.StatusRequest;
 import com.betrybe.enuns.Status;
 import com.betrybe.models.Delivery;
 import com.betrybe.models.Drone;
@@ -15,7 +14,6 @@ import com.betrybe.util.FormaterForLocalDateTime;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import org.jboss.logging.annotations.Pos;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -111,7 +109,7 @@ public class DeliveryService {
       delivery.setDrone(drone);
     }
 
-    if(deliveryRequest.getPosition() != null){
+    if (deliveryRequest.getPosition() != null) {
       Position position = deliveryRequest.getPosition();
       positionRepository.persist(position);
       delivery.setPosition(position);

@@ -18,7 +18,7 @@ public class Delivery {
   @Column
   private Status status;
   @ManyToOne
-  @JoinColumn(name="drone_id")
+  @JoinColumn(name = "drone_id")
   private Drone drone;
   @JoinColumn(name = "video_id")
   @OneToOne(fetch = FetchType.EAGER)

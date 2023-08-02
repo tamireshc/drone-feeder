@@ -1,10 +1,7 @@
 package com.betrybe.entities;
 
-import com.betrybe.enuns.Status;
-import com.betrybe.models.Drone;
 import com.betrybe.models.Position;
 import com.betrybe.models.Video;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,5 @@
 package com.betrybe.service;
 
-import com.betrybe.exceptions.NotFoundException;
 import com.betrybe.models.Drone;
 import com.betrybe.repository.DroneRepository;
 import jakarta.enterprise.context.ApplicationScoped;

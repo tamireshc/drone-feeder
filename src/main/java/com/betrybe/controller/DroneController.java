@@ -1,6 +1,5 @@
 package com.betrybe.controller;
 
-import com.betrybe.entities.Error;
 import com.betrybe.exceptions.NotFoundException;
 import com.betrybe.models.Drone;
 import com.betrybe.service.DroneService;
