@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class DeliveryRequest {
   private String schedule_delivery;
   private LocalDateTime delivery_date;
-  private Status status;
+  private String status;
   private Integer droneId;
   private Video video;
   private Position position;
@@ -32,11 +32,11 @@ public class DeliveryRequest {
     this.delivery_date = delivery_date;
   }
 
-  public Status getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(Status status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

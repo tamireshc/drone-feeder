@@ -56,17 +56,17 @@ public class DeliveryService {
     LocalDateTime dateTimeSchedule = FormaterForLocalDateTime.conversor(deliveryRequest.getSchedule_delivery());
     delivery.setSchedule_delivery(dateTimeSchedule);
 
-    delivery.setStatus(deliveryRequest.getStatus());
+    delivery.setStatus(Status.CREATED);
 
     deliveryRepository.persist(delivery);
     return delivery;
   }
 
   @Transactional
-  public Status updateStatus(Integer id, StatusRequest statusRequest) {
+  public Status updateStatus(Integer id, String statusRequest) {
     Delivery delivery = deliveryRepository.findById(id);
     Status status = null;
-    switch (statusRequest.getStatus()) {
+    switch (statusRequest) {
       case "ONROUTE":
         status = Status.ONROUTE;
         break;
@@ -85,20 +85,39 @@ public class DeliveryService {
   @Transactional
   public Delivery update(Integer id, DeliveryRequest deliveryRequest) {
     Delivery delivery = deliveryRepository.findById(id);
-    Video video = new Video();
-    video.setLink(deliveryRequest.getVideo().getLink());
-    videoRepository.persist(video); // colocar fora na classe video service
-    System.out.println("delivery" + delivery.getId());
-//    Drone drone = droneRepository.findById(deliveryRequest.getDroneId());
-//    Position position = deliveryRequest.getPosition();
-//    positionRepository.persist(position);
-    delivery.setSchedule_delivery(LocalDateTime.now());
-    delivery.setDelivery_date(LocalDateTime.now());
-//    delivery.setDrone(drone);
-//    delivery.setPosition(position);
-    delivery.setStatus(deliveryRequest.getStatus());
-    delivery.setVideo(video);
+
+    if (deliveryRequest.getSchedule_delivery() != null) {
+      LocalDateTime scheduleDate = FormaterForLocalDateTime.conversor(deliveryRequest.getSchedule_delivery());
+      delivery.setSchedule_delivery(scheduleDate);
+    }
+
+    if (deliveryRequest.getStatus().equals("FINISHED")) {
+      delivery.setDelivery_date(LocalDateTime.now());
+    }
+
+    if (deliveryRequest.getStatus() != null) {
+      this.updateStatus(id, deliveryRequest.getStatus());
+    }
+
+    if (deliveryRequest.getVideo() != null) {
+      Video video = new Video();
+      video.setLink(deliveryRequest.getVideo().getLink());
+      videoRepository.persist(video);
+      delivery.setVideo(video);
+    }
+
+    if (deliveryRequest.getDroneId() != null) {
+      Drone drone = droneRepository.findById(deliveryRequest.getDroneId());
+      delivery.setDrone(drone);
+    }
+
+    if(deliveryRequest.getPosition() != null){
+      Position position = deliveryRequest.getPosition();
+      positionRepository.persist(position);
+      delivery.setPosition(position);
+    }
+
     deliveryRepository.persist(delivery);
-    return null;
+    return delivery;
   }
 }

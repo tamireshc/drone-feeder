@@ -47,13 +47,13 @@ public class DeliveryController {
   @Path("/status/{id}")
   public Response updateStatus(@PathParam("id") Integer id, StatusRequest statusRequest) throws NotFoundException {
     Delivery delivery = deliveryService.findById(id);
-    if(delivery == null){
+    if (delivery == null) {
       throw new NotFoundException("Delivery not found");
     }
-    Status newStatus = deliveryService.updateStatus(id, statusRequest);
+    Status newStatus = deliveryService.updateStatus(id, statusRequest.getStatus());
     StatusResponse statusResponse = new StatusResponse();
     statusResponse.setStatus(statusRequest.getStatus());
-    if(newStatus == null){
+    if (newStatus == null) {
       statusResponse.setStatus("status not allowed");
       return Response.status(400).entity(statusResponse).build();
     }
@@ -66,8 +66,14 @@ public class DeliveryController {
   @Path("/{id}")
   public Response update(@PathParam("id") Integer id, DeliveryRequest deliveryRequest) {
     Delivery deliverySearch = deliveryService.findById(id);
-    if(deliverySearch == null){
+    if (deliverySearch == null) {
       throw new NotFoundException("Delivery not found");
+    }
+    if (deliveryRequest.getDroneId() != null) {
+      Drone droneSearch = droneService.findById(deliveryRequest.getDroneId());
+      if (droneSearch == null) {
+        throw new NotFoundException("Drone not Found");
+      }
     }
     Delivery delivery = deliveryService.update(id, deliveryRequest);
     return Response.status(200).entity(delivery).build();

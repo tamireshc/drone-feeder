@@ -19,7 +19,7 @@ public class VideoController {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public Response Create(Video videoRequest) {
-    Video video = videoService.Created(videoRequest);
+    Video video = videoService.created(videoRequest);
     return Response.status(201).entity(video).build();
   }
 

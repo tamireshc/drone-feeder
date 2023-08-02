@@ -14,7 +14,7 @@ public class VideoService {
   VideoRepository videoRepository;
 
   @Transactional
-  public Video Created(Video videoRequest) {
+  public Video created(Video videoRequest) {
     Video video = new Video();
     video.setLink(videoRequest.getLink());
     videoRepository.persist(video);
