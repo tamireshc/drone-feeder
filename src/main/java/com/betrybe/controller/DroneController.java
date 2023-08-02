@@ -19,9 +19,9 @@ public class DroneController {
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response create(Drone drone) {
-    String result = droneService.create(drone);
-    return Response.status(201).build();
+  public Response create(Drone droneRequest) {
+    Drone drone = droneService.create(droneRequest);
+    return Response.status(201).entity(drone).build();
   }
 
   @GET
@@ -38,7 +38,7 @@ public class DroneController {
   public Response update(@PathParam("id") Integer id, Drone drone) throws NotFoundException {
     Drone droneSearch = droneService.findById(id);
     if (droneSearch == null) {
-      throw new NotFoundException("Drone not Found");
+      throw new NotFoundException("Drone not found");
     }
     Drone droneAtt = droneService.update(id, drone);
     return Response.ok(droneAtt).build();
@@ -46,7 +46,7 @@ public class DroneController {
 
   @DELETE
   @Path("/{id}")
-  public Response update(@PathParam("id") Integer id) {
+  public Response delete(@PathParam("id") Integer id) {
     Drone droneSearch = droneService.findById(id);
     if (droneSearch == null) {
       throw new NotFoundException("Drone not Found");

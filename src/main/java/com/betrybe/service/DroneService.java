@@ -15,12 +15,12 @@ public class DroneService {
   DroneRepository droneRepository;
 
   @Transactional
-  public String create(Drone droneRequest) {
+  public Drone create(Drone droneRequest) {
     Drone drone = new Drone();
     drone.setBrand(droneRequest.getBrand());
     drone.setModel(droneRequest.getModel());
     droneRepository.persist(drone);
-    return "Created";
+    return drone;
   }
 
   @Transactional

@@ -9,18 +9,18 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 public class DeliveryRequest {
-  private LocalDateTime schedule_delivery;
+  private String schedule_delivery;
   private LocalDateTime delivery_date;
   private Status status;
   private Integer droneId;
   private Video video;
   private Position position;
 
-  public LocalDateTime getSchedule_delivery() {
+  public String getSchedule_delivery() {
     return schedule_delivery;
   }
 
-  public void setSchedule_delivery(LocalDateTime schedule_delivery) {
+  public void setSchedule_delivery(String schedule_delivery) {
     this.schedule_delivery = schedule_delivery;
   }
 

@@ -11,7 +11,6 @@ public class Delivery {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-
   @Column
   private LocalDateTime schedule_delivery;
   @Column
