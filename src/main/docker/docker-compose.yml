@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drone_feeder
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"

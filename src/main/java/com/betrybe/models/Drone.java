@@ -41,8 +41,4 @@ public class Drone {
   public void setBrand(String brand) {
     this.brand = brand;
   }
-
-  public void addDelivery(Delivery delivery) {
-    deliveries.add(delivery);
-  }
 }

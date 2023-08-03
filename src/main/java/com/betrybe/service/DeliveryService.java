@@ -45,7 +45,6 @@ public class DeliveryService {
     Drone drone = droneRepository.findById(deliveryRequest.getDroneId());
 
     delivery.setDrone(drone);
-    drone.addDelivery(delivery);
 
     Position position = deliveryRequest.getPosition();
     delivery.setPosition(position);
