@@ -13,6 +13,7 @@ import com.betrybe.repository.VideoRepository;
 import com.betrybe.util.FormaterForLocalDateTime;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.transaction.Transactional;
 
 import java.time.LocalDateTime;
@@ -24,10 +25,8 @@ public class DeliveryService {
   DeliveryRepository deliveryRepository;
   @Inject
   DroneRepository droneRepository;
-
   @Inject
   PositionRepository positionRepository;
-
   @Inject
   VideoRepository videoRepository;
 
@@ -46,6 +45,7 @@ public class DeliveryService {
     Drone drone = droneRepository.findById(deliveryRequest.getDroneId());
 
     delivery.setDrone(drone);
+    drone.addDelivery(delivery);
 
     Position position = deliveryRequest.getPosition();
     delivery.setPosition(position);
@@ -100,8 +100,9 @@ public class DeliveryService {
     if (deliveryRequest.getVideo() != null) {
       Video video = new Video();
       video.setLink(deliveryRequest.getVideo().getLink());
-      videoRepository.persist(video);
       delivery.setVideo(video);
+      videoRepository.persist(video);
+      deliveryRepository.persist(delivery);
     }
 
     if (deliveryRequest.getDroneId() != null) {
@@ -117,5 +118,10 @@ public class DeliveryService {
 
     deliveryRepository.persist(delivery);
     return delivery;
+  }
+
+  @Transactional
+  public void delete(Integer id) {
+    deliveryRepository.deleteById(id);
   }
 }

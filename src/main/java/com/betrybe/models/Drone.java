@@ -1,8 +1,8 @@
 package com.betrybe.models;
 
-
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +14,9 @@ public class Drone {
   private String model;
   @Column
   private String brand;
-  @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Delivery> deliveries;
+
+  @OneToMany(mappedBy = "drone")
+  private List<Delivery> deliveries = new ArrayList<>();
 
   public Integer getId() {
     return id;

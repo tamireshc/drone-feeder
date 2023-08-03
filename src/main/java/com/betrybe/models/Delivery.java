@@ -17,15 +17,17 @@ public class Delivery {
   private LocalDateTime delivery_date;
   @Column
   private Status status;
-  @ManyToOne
+
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
   @JoinColumn(name = "drone_id")
   private Drone drone;
+
   @JoinColumn(name = "video_id")
-  @OneToOne(fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
   private Video video;
 
   @JoinColumn(name = "position_id")
-  @OneToOne(fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
   private Position position;
 
   public Integer getId() {

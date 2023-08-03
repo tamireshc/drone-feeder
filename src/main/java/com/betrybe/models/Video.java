@@ -7,8 +7,12 @@ public class Video {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
+
   @Column
   private String link;
+
+  @OneToOne(mappedBy = "video")
+  private Delivery delivery;
 
   public Integer getId() {
     return id;
@@ -25,4 +29,5 @@ public class Video {
   public void setLink(String link) {
     this.link = link;
   }
+
 }
