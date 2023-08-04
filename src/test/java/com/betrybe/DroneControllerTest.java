@@ -111,7 +111,7 @@ public class DroneControllerTest {
   @DisplayName("4 - Deve buscar um drone com id inexistente e retornar  o Status 404 ")
   @Test
   @Transactional
-  void DeveBuscarUmDronePorIdInexistente() {
+  void BuscarUmDroneComIdInexistente() {
     Drone newDrone1 = new Drone();
     newDrone1.setBrand("DJI");
     newDrone1.setModel("Mavic 3 Pro");
@@ -152,10 +152,10 @@ public class DroneControllerTest {
       .body(is("Drone Deleted"));
   }
 
-  @DisplayName("6 - Deve deletar um drone com id inexistente e retornar  o Status 404 ")
+  @DisplayName("6 - Tenta deletar um drone com id inexistente e retornar o Status 404 ")
   @Test
   @Transactional
-  void DeveDeletarUmDronePorIdInexistente() {
+  void TentaDeletarUmDroneComIdInexistente() {
 
     given()
       .when()
@@ -198,10 +198,10 @@ public class DroneControllerTest {
       .body("brand", equalTo("Xiaomi"));
   }
 
-  @DisplayName("8 - Deve atualizar um drone com id inexistente e retornar  o Status 404 ")
+  @DisplayName("8 - Tenta atualizar um drone com id inexistente e retornar  o Status 404 ")
   @Test
   @Transactional
-  void DeveAtualizarUmDronePorIdInexistente() {
+  void TentaAtualizarUmDronePorIdInexistente() {
     Drone newDrone2 = new Drone();
     newDrone2.setBrand("Xiaomi");
     newDrone2.setModel("Fimi X8 Mini");

@@ -89,10 +89,10 @@ public class VideoControllerTest {
       .statusCode(Response.Status.OK.getStatusCode());
   }
 
-  @DisplayName("4 - Deve buscar um video com id inexistente e retornar  o Status 404 ")
+  @DisplayName("4 - Tenta buscar um video com id inexistente e retorna o Status 404 ")
   @Test
   @Transactional
-  void DeveBuscarUmVideoPorIdInexistente() {
+  void TentaBuscarUmVideoComIdInexistente() {
 
     given()
       .when()
