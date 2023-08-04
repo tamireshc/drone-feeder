@@ -280,7 +280,7 @@ public class DeliveryControllerTest {
     Video newVideo = new Video();
     newVideo.setLink("http://video.com");
 
-    deliveryRequest2.setStatus("FINISHED");
+    deliveryRequest2.setStatus("ONROUTE");
     deliveryRequest2.setVideo(newVideo);
 
     given()
