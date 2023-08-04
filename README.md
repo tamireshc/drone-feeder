@@ -36,7 +36,7 @@ Execute
 
 Após rodar os testes procure os resultados na pasta target/jacoco-report 
 
-O testes deste projeto contemplaram uma cobertura de 95% da linhas.<br>
+Os testes deste projeto contemplaram uma cobertura de 95% da linhas.<br>
 
 
 <img width="1161" alt="Captura de Tela 2023-08-04 às 18 23 38" src="https://github.com/tamireshc/drone-feeder/assets/65035109/5e8b1811-1c4e-4a65-b88c-0098cf706de2">
