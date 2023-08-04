@@ -36,6 +36,7 @@ public class VideoControllerTest {
     newVideo.setLink("http://video.com");
     videoRepository.persist(newVideo);
   }
+
   @AfterEach
   @Transactional
   public void cleanUp() {
