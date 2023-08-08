@@ -9,7 +9,6 @@ Todas essas informações são armazenadas em um banco de dados MySQL.<br>
 -  ORM - [Hibernate ORM with Panache](https://quarkus.io/guides/hibernate-orm-panache) <br>
 - Testes - [JUnit 5](https://junit.org/junit5/) e [Testcontainers](https://java.testcontainers.org/) <br>
 - Cobertura de testes - [JaCoCo Java Code Coverage Library](https://www.eclemma.org/jacoco/)
-- Deploy - []() <br>
 
  ## 📋 Execute o projeto em sua máquina com docker em dev mode
 
@@ -51,15 +50,6 @@ Rode os testes:
 Os testes deste projeto contemplaram uma cobertura de 95% da linhas.<br>
 
 <img width="1161" alt="Captura de Tela 2023-08-04 às 18 23 38" src="https://github.com/tamireshc/drone-feeder/assets/65035109/5e8b1811-1c4e-4a65-b88c-0098cf706de2">
-
-## :hammer: Deploy
->O deploy da aplicação foi executado utilizando o <br>
->Os links do deploy são:<br>
-### Backend
-`https://` 
-### Banco de dados:
-`https://`
-
 
 ## 🔎 Documentação da API
 
