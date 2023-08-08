@@ -73,6 +73,9 @@ public class DeliveryService {
       case "CANCELED":
         status = Status.CANCELED;
         break;
+      case "CREATED":
+        status = Status.CREATED;
+        break;
     }
     delivery.setStatus(status);
     deliveryRepository.persist(delivery);
