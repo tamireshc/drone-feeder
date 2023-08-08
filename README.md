@@ -1,18 +1,60 @@
 # drone-feeder
+O Drone-Feeder é uma API REST para um sistema de entregas utilizando Drones.<br>
+A API permite gerenciar os drones e as entregas exibindo informações como posição geográfica onde será entregue o pacote(latitude e longitude), data e horário da entrega, seu status (criada, em rota, finalizada e cancelada) e o link do vídeo do momento em que o pacote foi recebido. <br>
+Todas essas informações são armazenadas em um banco de dados MySQL.<br>
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## :mag: Tecnologias utilizadas
+- Construção da API - [Java](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html) e [Quarkus](https://quarkus.io/)<br>
+- Banco de dados - [MySQL](https://www.mysql.com/) <br>
+-  ORM - [Hibernate ORM with Panache](https://quarkus.io/guides/hibernate-orm-panache) <br>
+- Testes - [JUnit 5](https://junit.org/junit5/) e [Testcontainers](https://java.testcontainers.org/) <br>
+- Cobertura de testes - [JaCoCo Java Code Coverage Library](https://www.eclemma.org/jacoco/)
+- Deploy - []() <br>
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+ ## 📋 Execute o projeto em sua máquina com docker em dev mode
 
-## Running the application in dev mode
+Clone o repositório:
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
+```
+git clone git@github.com:tamireshc/Java.git
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+Crie um container MySQL com Docker iniciando o banco drone_feeder
+```
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=drone_feeder -d  mysql:latest
+```
 
+Execute
+```
+./mvnw compile quarkus:dev
+```
+*As migrations pré definidas serão executadas automaticamente criando as tabelas do projeto. 
+
+## 🕵 Diagrama UML da API <br>
+![Drone Feeder drawio](https://github.com/tamireshc/drone-feeder/assets/65035109/2be56cf8-fc37-4176-ba03-1663e45d4d5b)
+
+## 🧪 Executando os testes
+
+```
+./mvnw test
+
+```
+### Testes de cobertura:<br>
+
+Após rodar os testes procure os resultados na pasta target/jacoco-report 
+
+Os testes deste projeto contemplaram uma cobertura de 95% da linhas.<br>
+
+
+<img width="1161" alt="Captura de Tela 2023-08-04 às 18 23 38" src="https://github.com/tamireshc/drone-feeder/assets/65035109/5e8b1811-1c4e-4a65-b88c-0098cf706de2">
+
+## 🔎 Documentação da API
+
+
+
+
+
+.....
 ## Packaging and running the application
 
 The application can be packaged using:
@@ -31,42 +73,10 @@ If you want to build an _über-jar_, execute the following command:
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
 
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/drone-feeder-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
-- RESTEasy Classic JSON-B ([guide](https://quarkus.io/guides/rest-json)): JSON-B serialization support for RESTEasy Classic
-- Jacoco - Code Coverage ([guide](https://quarkus.io/guides/tests-with-coverage)): Jacoco test coverage support
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
-- JDBC Driver - MySQL ([guide](https://quarkus.io/guides/datasource)): Connect to the MySQL database via JDBC
-
-## Provided Code
-
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
 
 
-### RESTEasy JAX-RS
+
+
 
 Easily start your RESTful Web Services
 
