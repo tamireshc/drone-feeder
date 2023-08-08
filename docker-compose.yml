@@ -1,6 +1,13 @@
 version: '3.7'
 
 services:
+  application:
+    build: .
+    restart: always
+    ports:
+      - 8888:8888
+    networks:
+      - my_network
   mysql-db:
     image: mysql:8.0
     container_name: mysql-container
@@ -11,3 +18,8 @@ services:
       MYSQL_PASSWORD: root
     ports:
       - "3306:3306"
+    networks:
+      - my_network
+networks:
+  my_network:
+    driver: bridge
