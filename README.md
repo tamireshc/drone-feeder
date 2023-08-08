@@ -11,17 +11,24 @@ Todas essas informações são armazenadas em um banco de dados MySQL.<br>
 - Cobertura de testes - [JaCoCo Java Code Coverage Library](https://www.eclemma.org/jacoco/)
 - Deploy - []() <br>
 
- ## 📋 Execute o projeto em sua máquina em dev mode
+ ## 📋 Execute o projeto em sua máquina com docker em dev mode
 
 Clone o repositório:
 
 ```
 git clone git@github.com:tamireshc/Java.git
 ```
+
+Crie um container MySQL com Docker iniciando o banco drone_feeder
+```
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=drone_feeder -d  mysql:latest
+```
+
 Execute
 ```
 ./mvnw compile quarkus:dev
 ```
+*As migrations pré definidas serão executadas automaticamente criando as tabelas do projeto. 
 
 ## 🕵 Diagrama UML da API <br>
 ![Drone Feeder drawio](https://github.com/tamireshc/drone-feeder/assets/65035109/2be56cf8-fc37-4176-ba03-1663e45d4d5b)
