@@ -30,7 +30,7 @@ Execute
 *As migrations pré definidas serão executadas automaticamente criando as tabelas do projeto. 
 
 ## 🕵 Diagrama UML da API <br>
-![Drone Feeder drawio](https://github.com/tamireshc/drone-feeder/assets/65035109/2be56cf8-fc37-4176-ba03-1663e45d4d5b)
+![Drone Feeder drawio](https://github.com/tamireshc/drone-feeder/assets/65035109/ead2aa91-46c0-4910-9ac4-6faf4cc6da03)
 
 ## 🧪 Executando os testes
 Inicie o banco MySQL com Docker iniciando o banco drone_feeder
@@ -343,8 +343,9 @@ Drone Deleted
 :white_check_mark: STATUS 200 OK
 </details>
 
+<details>
+<summary><strong>:x: Casos de Falhas  </strong></summary><br/>
 
-### Casos de Falha
 - Ao atualizar, deletar e buscar por id para um drone inexistente deve  emitir a exceção `NotFoundException`
  ```json
 {
@@ -369,5 +370,5 @@ Drone Deleted
 "message": "Delivery not found"
 }
   ```
-
+</details>
 
