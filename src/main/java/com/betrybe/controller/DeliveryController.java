@@ -29,6 +29,14 @@ public class DeliveryController {
     return Response.ok(deliveries).build();
   }
 
+  @GET
+  @Path("/{id}")
+  public Response findById(@PathParam("id") Integer id) {
+   Delivery delivery = deliveryService.findById(id);
+    return Response.ok(delivery).build();
+  }
+
+
   @POST
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)

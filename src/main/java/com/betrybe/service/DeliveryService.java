@@ -2,6 +2,7 @@ package com.betrybe.service;
 
 import com.betrybe.entities.DeliveryRequest;
 import com.betrybe.enuns.Status;
+import com.betrybe.exceptions.NotFoundException;
 import com.betrybe.models.Delivery;
 import com.betrybe.models.Drone;
 import com.betrybe.models.Position;
@@ -18,6 +19,7 @@ import jakarta.transaction.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DeliveryService {
@@ -35,7 +37,8 @@ public class DeliveryService {
   }
 
   public Delivery findById(Integer id) {
-    return deliveryRepository.findById(id);
+    Optional<Delivery> delivery = Optional.ofNullable(deliveryRepository.findById(id));
+    return delivery.orElseThrow(()-> new NotFoundException("Delivery not found"));
   }
 
   @Transactional
