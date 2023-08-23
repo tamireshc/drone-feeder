@@ -67,10 +67,6 @@ public class DeliveryController {
   @DELETE
   @Path("/{id}")
   public Response delete(@PathParam("id") Integer id) {
-    Delivery deliverySearch = deliveryService.findById(id);
-    if (deliverySearch == null) {
-      throw new NotFoundException("Delivery not found");
-    }
     deliveryService.delete(id);
     return Response.ok().build();
   }

@@ -131,6 +131,7 @@ public class DeliveryService {
 
   @Transactional
   public void delete(Integer id) {
+    this.findById(id);
     deliveryRepository.deleteById(id);
   }
 }
