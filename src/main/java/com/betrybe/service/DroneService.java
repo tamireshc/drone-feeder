@@ -47,5 +47,4 @@ public class DroneService {
     Optional<Drone> drone = Optional.ofNullable(droneRepository.findById(id));
     return drone.orElseThrow(()-> new NotFoundException("Drone not Found"));
   }
-
 }

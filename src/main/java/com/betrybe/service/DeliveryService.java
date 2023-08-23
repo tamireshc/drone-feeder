@@ -3,6 +3,8 @@ package com.betrybe.service;
 import com.betrybe.entities.DeliveryRequest;
 import com.betrybe.enuns.Status;
 import com.betrybe.exceptions.NotFoundException;
+import com.betrybe.exceptions.StatusNotAllowedException;
+import com.betrybe.exceptions.StatusNotAllowedExceptionHandler;
 import com.betrybe.models.Delivery;
 import com.betrybe.models.Drone;
 import com.betrybe.models.Position;
@@ -78,6 +80,9 @@ public class DeliveryService {
         break;
       case "CREATED":
         status = Status.CREATED;
+        break;
+      default:
+        throw new StatusNotAllowedException("Status not allowed");
     }
     delivery.setStatus(status);
     deliveryRepository.persist(delivery);
@@ -86,7 +91,7 @@ public class DeliveryService {
 
   @Transactional
   public Delivery update(Integer id, DeliveryRequest deliveryRequest) {
-    Delivery delivery = deliveryRepository.findById(id);
+    Delivery delivery = this.findById(id);
 
     if (deliveryRequest.getSchedule_delivery() != null) {
       LocalDateTime scheduleDate = FormaterForLocalDateTime.conversor(deliveryRequest.getSchedule_delivery());
