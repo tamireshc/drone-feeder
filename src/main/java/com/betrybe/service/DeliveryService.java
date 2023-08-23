@@ -40,7 +40,7 @@ public class DeliveryService {
 
   public Delivery findById(Integer id) {
     Optional<Delivery> delivery = Optional.ofNullable(deliveryRepository.findById(id));
-    return delivery.orElseThrow(()-> new NotFoundException("Delivery not found"));
+    return delivery.orElseThrow(() -> new NotFoundException("Delivery not found"));
   }
 
   @Transactional

@@ -26,7 +26,7 @@ public class DroneService {
 
   @Transactional
   public Drone update(Integer id, Drone droneRequest) {
-    Drone drone = droneRepository.findById(id);
+    Drone drone = this.findById(id);
     drone.setBrand(droneRequest.getBrand());
     drone.setModel(droneRequest.getModel());
     droneRepository.persist(drone);
@@ -35,7 +35,7 @@ public class DroneService {
 
   @Transactional
   public void delete(Integer id) {
-    Drone drone = droneRepository.findById(id);
+    Drone drone = this.findById(id);
     droneRepository.delete(drone);
   }
 

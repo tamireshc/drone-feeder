@@ -35,10 +35,6 @@ public class DroneController {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public Response update(@PathParam("id") Integer id, Drone drone) throws NotFoundException {
-    Drone droneSearch = droneService.findById(id);
-    if (droneSearch == null) {
-      throw new NotFoundException("Drone not found");
-    }
     Drone droneAtt = droneService.update(id, drone);
     return Response.ok(droneAtt).build();
   }
@@ -46,10 +42,6 @@ public class DroneController {
   @DELETE
   @Path("/{id}")
   public Response delete(@PathParam("id") Integer id) {
-    Drone droneSearch = droneService.findById(id);
-    if (droneSearch == null) {
-      throw new NotFoundException("Drone not Found");
-    }
     droneService.delete(id);
     return Response.ok("Drone Deleted").build();
   }

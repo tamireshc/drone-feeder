@@ -20,8 +20,6 @@ import java.util.List;
 public class DeliveryController {
   @Inject
   DeliveryService deliveryService;
-  @Inject
-  DroneService droneService;
 
   @GET
   public Response getAll() {
@@ -68,6 +66,6 @@ public class DeliveryController {
   @Path("/{id}")
   public Response delete(@PathParam("id") Integer id) {
     deliveryService.delete(id);
-    return Response.ok().build();
+    return Response.ok("Delivery Deleted").build();
   }
 }
