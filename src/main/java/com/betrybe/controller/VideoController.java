@@ -18,7 +18,7 @@ public class VideoController {
   @POST
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response Create(Video videoRequest) {
+  public Response create(Video videoRequest) {
     Video video = videoService.created(videoRequest);
     return Response.status(201).entity(video).build();
   }
@@ -35,9 +35,6 @@ public class VideoController {
   @Path("/{id}")
   public Response findById(@PathParam("id") Integer id) throws NotFoundException {
     Video video = videoService.findById(id);
-    if (video == null) {
-      throw new NotFoundException("Video not Found");
-    }
     return Response.ok(video).build();
   }
 }
