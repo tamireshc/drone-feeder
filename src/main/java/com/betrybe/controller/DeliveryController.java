@@ -33,10 +33,6 @@ public class DeliveryController {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public Response create(DeliveryRequest deliveryRequest) throws NotFoundException {
-    Drone droneSearch = droneService.findById(deliveryRequest.getDroneId());
-    if (droneSearch == null) {
-      throw new NotFoundException("Drone not Found");
-    }
     Delivery delivery = deliveryService.created(deliveryRequest);
     return Response.status(201).entity(delivery).build();
   }

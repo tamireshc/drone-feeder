@@ -58,9 +58,6 @@ public class DroneController {
   @Path("/{id}")
   public Response findById(@PathParam("id") Integer id) {
     Drone droneSearch = droneService.findById(id);
-    if (droneSearch == null) {
-      throw new NotFoundException("Drone not Found");
-    }
     return Response.ok(droneSearch).build();
   }
 }

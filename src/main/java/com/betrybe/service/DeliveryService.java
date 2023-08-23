@@ -24,7 +24,7 @@ public class DeliveryService {
   @Inject
   DeliveryRepository deliveryRepository;
   @Inject
-  DroneRepository droneRepository;
+  DroneService droneService;
   @Inject
   PositionRepository positionRepository;
   @Inject
@@ -42,7 +42,7 @@ public class DeliveryService {
   public Delivery created(DeliveryRequest deliveryRequest) {
     Delivery delivery = new Delivery();
 
-    Drone drone = droneRepository.findById(deliveryRequest.getDroneId());
+    Drone drone = droneService.findById(deliveryRequest.getDroneId());
 
     delivery.setDrone(drone);
 
@@ -108,7 +108,7 @@ public class DeliveryService {
     }
 
     if (deliveryRequest.getDroneId() != null) {
-      Drone drone = droneRepository.findById(deliveryRequest.getDroneId());
+      Drone drone = droneService.findById(deliveryRequest.getDroneId());
       delivery.setDrone(drone);
     }
 

@@ -1,5 +1,6 @@
 package com.betrybe.service;
 
+import com.betrybe.exceptions.NotFoundException;
 import com.betrybe.models.Drone;
 import com.betrybe.repository.DroneRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -7,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DroneService {
@@ -42,7 +44,8 @@ public class DroneService {
   }
 
   public Drone findById(Integer id) {
-    return droneRepository.findById(id);
+    Optional<Drone> drone = Optional.ofNullable(droneRepository.findById(id));
+    return drone.orElseThrow(()-> new NotFoundException("Drone not Found"));
   }
 
 }
