@@ -339,6 +339,11 @@ Drone Deleted
 ```
   DELETE /delivery/:id
 ```
+  Corpo da resposta: <br/>
+  
+  ```json
+Delivery Deleted
+  ```
 
 :white_check_mark: STATUS 200 OK
 </details>
@@ -346,25 +351,29 @@ Drone Deleted
 <details>
 <summary><strong>:x: Casos de Falhas  </strong></summary><br/>
 
-- Ao atualizar, deletar e buscar por id para um drone inexistente deve  emitir a exceção `NotFoundException`
+- Ao atualizar, deletar e buscar por id para um drone inexistente deve  emitir a exceção `NotFoundException`<br><br>
+:warning: STATUS 404 - Not Found
  ```json
 {
 	"message": "Drone not found"
 }
   ```
-- Ao atualizar, deletar e buscar por id para um video inexistente deve emitir a exceção `NotFoundException`
+- Ao atualizar, deletar e buscar por id para um video inexistente deve emitir a exceção `NotFoundException`<br><br>
+:warning: STATUS 404 - Not Found
  ```json
 {
 	"message": "Video not found"
 }
   ```
-- Ao atualizar o status de uma entrega para um valor diferente de "CANCELED", "ONROUTE", "FINISHED" ou "CANCELED"
+- Ao atualizar o status de uma entrega para um valor diferente de "CANCELED", "ONROUTE", "FINISHED" ou "CANCELED" deve  emitir a exceção `StatusNotAllowedException`<br><br>
+:bangbang: STATUS 405 - Method Not Allowed
  ```json
 {
-	"status": "status not allowed"
+	"message": "Status not allowed"
 }
   ```
-- Ao atualizar, deletar e buscar por id para uma entrega inexistente deve emitir a exceção `NotFoundException`
+- Ao atualizar, deletar e buscar por id para uma entrega inexistente deve emitir a exceção `NotFoundException`<br><br>
+:warning: STATUS 404 - Not Found
  ```json
 {
 "message": "Delivery not found"
