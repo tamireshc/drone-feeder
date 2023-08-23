@@ -64,7 +64,7 @@ public class DeliveryService {
 
   @Transactional
   public Status updateStatus(Integer id, String statusRequest) {
-    Delivery delivery = deliveryRepository.findById(id);
+    Delivery delivery = this.findById(id);
     Status status = null;
     switch (statusRequest) {
       case "ONROUTE":
@@ -78,7 +78,6 @@ public class DeliveryService {
         break;
       case "CREATED":
         status = Status.CREATED;
-        break;
     }
     delivery.setStatus(status);
     deliveryRepository.persist(delivery);

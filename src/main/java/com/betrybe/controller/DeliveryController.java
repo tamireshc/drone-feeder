@@ -32,10 +32,9 @@ public class DeliveryController {
   @GET
   @Path("/{id}")
   public Response findById(@PathParam("id") Integer id) {
-   Delivery delivery = deliveryService.findById(id);
+    Delivery delivery = deliveryService.findById(id);
     return Response.ok(delivery).build();
   }
-
 
   @POST
   @Produces(MediaType.APPLICATION_JSON)
@@ -50,10 +49,6 @@ public class DeliveryController {
   @Consumes(MediaType.APPLICATION_JSON)
   @Path("/status/{id}")
   public Response updateStatus(@PathParam("id") Integer id, StatusRequest statusRequest) throws NotFoundException {
-    Delivery delivery = deliveryService.findById(id);
-    if (delivery == null) {
-      throw new NotFoundException("Delivery not found");
-    }
     Status newStatus = deliveryService.updateStatus(id, statusRequest.getStatus());
     StatusResponse statusResponse = new StatusResponse();
     statusResponse.setStatus(statusRequest.getStatus());
