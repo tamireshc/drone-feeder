@@ -1,6 +1,5 @@
 package com.betrybe.controller;
 
-import com.betrybe.exceptions.NotFoundException;
 import com.betrybe.models.Drone;
 import com.betrybe.service.DroneService;
 
@@ -34,7 +33,7 @@ public class DroneController {
   @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response update(@PathParam("id") Integer id, Drone drone) throws NotFoundException {
+  public Response update(@PathParam("id") Integer id, Drone drone) {
     Drone droneAtt = droneService.update(id, drone);
     return Response.ok(droneAtt).build();
   }

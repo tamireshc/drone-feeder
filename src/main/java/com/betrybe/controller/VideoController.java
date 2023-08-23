@@ -1,6 +1,5 @@
 package com.betrybe.controller;
 
-import com.betrybe.exceptions.NotFoundException;
 import com.betrybe.models.Video;
 import com.betrybe.service.VideoService;
 import jakarta.inject.Inject;
@@ -33,7 +32,7 @@ public class VideoController {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("/{id}")
-  public Response findById(@PathParam("id") Integer id) throws NotFoundException {
+  public Response findById(@PathParam("id") Integer id) {
     Video video = videoService.findById(id);
     return Response.ok(video).build();
   }
